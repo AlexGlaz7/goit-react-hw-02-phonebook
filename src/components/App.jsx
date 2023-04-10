@@ -72,7 +72,6 @@ export default class App extends Component {
   };
 
   render() {
-    const { filter, contacts } = this.state;
     return (
       <div>
         <Form onSubmit={this.formSubmitHandler} />
