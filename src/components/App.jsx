@@ -16,7 +16,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    console.log("component did mount");
+    console.log(" component did mount");
     const contacts = localStorage.getItem("contacts");
     const parsedContacts = JSON.parse(contacts);
     console.log(parsedContacts);
@@ -33,35 +33,36 @@ export default class App extends Component {
     }
   }
 
+
   formId = () => {
     shortid.generate();
   };
 
   contactDelete = (contactId) => {
     this.setState((prevState) => ({
-      contacts: prevState.contacts.filter((contact) => contact.id !== contactId),
+      contacts: prevState.contacts.filter(
+        (contact) => contact.id !== contactId
+      ),
     }));
   };
 
   formSubmitHandler = (data) => {
-    const { contacts } = this.state;
-    const existingContact = contacts.find(
-      (contact) => contact.name.toLowerCase() === data.name.toLowerCase()
-    );
-    if (existingContact) {
-      alert("Contact already exists in phonebook.");
+    this.state.contacts.forEach((element) => {
+      if (element.name.toLowerCase() === data.name.toLowerCase()) {
+        data.name = "repeat";
+        return alert("contact already exist at phonebook ");
+      }
+    });
+    if (data.name === "repeat") {
       return;
     }
-    const newContact = { ...data, id: shortid.generate() };
     this.setState(({ contacts }) => ({
-      contacts: [newContact, ...contacts],
+      contacts: [data, ...contacts],
     }));
   };
-
   changeFilter = (event) => {
     this.setState({ filter: event.currentTarget.value });
   };
-
   getContactsShown = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
@@ -70,7 +71,6 @@ export default class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
   render() {
     return (
       <div>
