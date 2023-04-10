@@ -1,9 +1,18 @@
-import { FilterInput } from './Filter.styled';
-export function Filter({ filter }) {
-  return (
-    <>
-      <h2>Find contacts by name</h2>
-      <FilterInput type="text" name="filter" onChange={filter} />
-    </>
-  );
-}
+import React from "react";
+import PropTypes from "prop-types";
+import { List, Input } from "./Filter.styled"
+
+const Filter = ({ value, onChange }) => (
+    <label>
+        <List>
+        Find contacts by name
+        <Input input type="text" value={value} onChange={onChange} />
+        </List>
+    </label>
+);
+
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+};
+export default Filter;
