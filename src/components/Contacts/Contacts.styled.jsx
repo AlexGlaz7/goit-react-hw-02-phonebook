@@ -1,26 +1,26 @@
 import styled from '@emotion/styled';
 
-const ContactsList = styled.ul`
+ const List = styled.ul`
   display: flex;
+  margin: auto;
   flex-direction: column;
   width: 300px;
   outline: 2px solid black;
   padding: 10px;
-`;
-const ContactEl = styled.li`
+`
+ const ContactItem = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-
-  p {
-    margin-right: 10px;
-  }
-  button {
-    width: 100px;
-    background-color: #f70a0a;
-    border-radius: 5px;
-    height: 20px;
+  align-items: baseline;`
+  
+ const ButtonDelete = styled.button`
+  width: 100px;
+  background-color: black;
+  color: orange;
+  border-radius: 50px;
+  height: 20px;
+  margin-bottom: 10px;
   }
 `;
 
-export { ContactEl, ContactsList };
+export { List, ContactItem, ButtonDelete };
