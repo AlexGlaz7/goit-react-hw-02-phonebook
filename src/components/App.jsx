@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import shortid from "shortid";
 import {Title1, Title2} from '../components/App.styled';
 import Form from "./NameInput/NameInput";
 import Filter from "./Filter/Filter";
