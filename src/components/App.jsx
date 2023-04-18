@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import {Title1, Title2} from '../components/App.styled';
 import Form from "./NameInput/NameInput";
 import Filter from "./Filter/Filter";
 import Contact from "./Contacts/Contacts";
@@ -13,29 +14,6 @@ export default class App extends Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-  };
-
-  componentDidMount() {
-    console.log(" component did mount");
-    const contacts = localStorage.getItem("contacts");
-    const parsedContacts = JSON.parse(contacts);
-    console.log(parsedContacts);
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("component did update");
-    if (this.state.contacts !== prevState.contacts) {
-      console.log("component was updated");
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-    }
-  }
-
-
-  formId = () => {
-    shortid.generate();
   };
 
   contactDelete = (contactId) => {
@@ -74,7 +52,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <Title1>Phonebook</Title1>
         <Form onSubmit={this.formSubmitHandler} />
+        <Title2>Contacts</Title2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <Contact
           contacts={this.getContactsShown()}

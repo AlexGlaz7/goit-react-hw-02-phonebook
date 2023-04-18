@@ -8,7 +8,12 @@ const Contact = ({ contacts, handleDelete }) => (
     </List>
 );
 Contact.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.object),
+    contacts: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
     handleDelete: PropTypes.func.isRequired,
 };
 export default Contact;
